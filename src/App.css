@@ -1,38 +1,91 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+* {
+  font-family: 'Space Mono', monospace;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #c5e4e7;
+}
+.title {
+  max-width: 100%;
+  height: 25vh;
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  margin-top: 25px;
+}
+h3 {
+  color: #3e6465;
+  text-transform: uppercase;
+  letter-spacing: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.card {
+  max-width: 100%;
+  height: 71vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+}
+section {
+  width: 800px;
+  height: 450px;
+  background: rgb(255, 255, 255);
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 20px;
+}
+.cal,
+.result {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 45px;
+}
+.cal > div {
+  margin-bottom: 2.5rem;
+}
+.input-box {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: 2.5px solid #ffffff;
+  border-radius: 4px;
+  padding-left: 0.5rem;
+  overflow: hidden;
+  background: #f3f8fb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.input-box .prefix,
+.input-box input::placeholder {
+  font-size: 1.5rem;
+  color: #a3b5b5;
+}
+
+.input-box input {
+  flex-grow: 1;
+  font-size: 1.5rem;
+  background: #f3f8fb;
+  border: none;
+  outline: none;
+  padding: 0.5rem;
+  color: #094744;
+  font-weight: 700;
+}
+.rightAlignText {
+  text-align: right;
+  cursor: text;
+}
+
+.input-box:focus-within {
+  border-color: hsl(172, 67%, 45%);
 }
