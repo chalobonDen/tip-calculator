@@ -12,21 +12,37 @@ const Card = ({ buttonData }) => {
 
   const changePercent = (percent) => {
     setPercent(percent);
+
+    if (price !== 0 && number !== 0) {
+      handleCalculate();
+    }
   };
 
   const changePercentInput = (e) => {
     const percent = e.target.value;
     setPercent(percent);
+
+    if (price !== 0 && number !== 0) {
+      handleCalculate();
+    }
   };
 
   const handleChangePrice = (e) => {
     const value = e.target.value;
     setPrice(value);
+
+    if (price !== 0 && number !== 0) {
+      handleCalculate();
+    }
   };
 
   const handleChangeNumber = (e) => {
     const value = e.target.value;
     setNumber(value);
+
+    if (price !== 0 && number !== 0) {
+      handleCalculate();
+    }
   };
 
   const handleReset = () => {
@@ -36,7 +52,11 @@ const Card = ({ buttonData }) => {
   };
 
   const handleCalculate = () => {
-    setTip_amount((price * percent) / 100 / number);
+    if (percent === 0) {
+      setTip_amount(price / 100 / number);
+    } else {
+      setTip_amount((price * percent) / 100 / number);
+    }
     setTotal(price / number + tip_amount);
   };
 
