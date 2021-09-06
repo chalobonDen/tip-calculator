@@ -32,8 +32,8 @@ h3 {
   justify-content: center;
   align-items: flex-start;
 }
-section {
-  width: 800px;
+.card > section {
+  width: 900px;
   height: 450px;
   background: rgb(255, 255, 255);
 
@@ -49,35 +49,36 @@ section {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  margin: 45px;
+}
+.cal {
+  margin: 2.5rem;
 }
 .cal > div {
-  margin-bottom: 2.5rem;
+  margin: 1rem 0;
+  width: 100%;
 }
 .input-box {
   display: flex;
   align-items: center;
   width: 100%;
-  border: 2.5px solid #ffffff;
-  border-radius: 4px;
-  padding-left: 0.5rem;
+  border: 2.5px solid #f3f8fb;
+  border-radius: 5px;
+  padding-left: 1rem;
   overflow: hidden;
   background: #f3f8fb;
 }
-
 .input-box .prefix,
 .input-box input::placeholder {
   font-size: 1.5rem;
   color: #a3b5b5;
 }
-
 .input-box input {
   flex-grow: 1;
   font-size: 1.5rem;
   background: #f3f8fb;
   border: none;
   outline: none;
-  padding: 0.5rem;
+  padding: 0.2rem 1rem;
   color: #094744;
   font-weight: 700;
 }
@@ -85,7 +86,91 @@ section {
   text-align: right;
   cursor: text;
 }
-
 .input-box:focus-within {
-  border-color: hsl(172, 67%, 45%);
+  border: 2.5px solid hsl(172, 67%, 45%);
+}
+
+.tip-percent {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.tip-percent button,
+.tip-percent input {
+  width: 30%;
+  height: 40px;
+  margin: 8px 0;
+  border-radius: 5px;
+  font-size: 20px;
+  border: none;
+}
+.tip-percent input {
+  background-color: #f3f8fb;
+}
+
+/* ........... */
+.tip-percent button {
+  background-color: #094744;
+  color: #fff;
+  border: none;
+}
+
+.tip-percent button:focus {
+  background-color: #26c2ad;
+  color: #00474b;
+  border: none;
+}
+
+.tip-percent > input:focus {
+  outline: none !important;
+  border: 2.5px solid hsl(172, 67%, 45%);
+}
+
+.tip-percent > input::placeholder {
+  font-size: 1.5rem;
+  color: #607d79;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Result Card */
+.result {
+  background-color: #00474b;
+  margin: 2rem;
+  padding: 2rem;
+  color: #fff;
+  height: 50vh;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    'title result'
+    'title result'
+    'btnReset btnReset';
+  grid-gap: 60px;
+}
+
+.summary {
+  text-align: right;
+}
+.result > .reset {
+  grid-area: btnReset;
+  width: 100%;
+  height: 2.5rem;
+  background-color: #26c2ad;
+  font-size: 20px;
+  font-weight: 550;
+  border: none;
+}
+
+.result > .reset-defalt {
+  grid-area: btnReset;
+  width: 100%;
+  height: 2.5rem;
+  color: #065d64;
+  background-color: #0d686d;
+  font-size: 20px;
+  font-weight: 550;
+  border: none;
 }
