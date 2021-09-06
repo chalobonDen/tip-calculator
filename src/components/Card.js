@@ -5,9 +5,10 @@ import person from '../images/icon-person.svg';
 
 const Card = ({ buttonData }) => {
   const [percent, setPercent] = useState(0);
-  const [number, setNumber] = useState(1);
+  const [number, setNumber] = useState(0);
   const [price, setPrice] = useState(0);
-  // const [tip_amount, setTip_amount] = useState(0);
+  const [tip_amount, setTip_amount] = useState(0);
+  const [total, setTotal] = useState(0);
 
   const changePercent = (percent) => {
     setPercent(percent);
@@ -30,12 +31,14 @@ const Card = ({ buttonData }) => {
 
   const handleReset = () => {
     setPercent(0);
-    setNumber(1);
+    setNumber(0);
     setPrice(0);
   };
 
-  const tip_amount = (price * percent) / 100 / number;
-  const total = price / number + tip_amount;
+  const handleCalculate = () => {
+    setTip_amount((price * percent) / 100 / number);
+    setTotal(price / number + tip_amount);
+  };
 
   return (
     <div className="card">
@@ -49,7 +52,7 @@ const Card = ({ buttonData }) => {
               </span>
               <input
                 onChange={handleChangePrice}
-                value={price}
+                // value={price}
                 type="number"
                 placeholder="0"
                 className="rightAlignText"
@@ -88,12 +91,15 @@ const Card = ({ buttonData }) => {
                   onChange={handleChangeNumber}
                   type="number"
                   placeholder="0"
+                  // value={number}
                   className="rightAlignText"
                 />
               </div>
             </div>
           </div>
         </div>
+
+        {/* <button onClick={handleCalculate}>submit</button> */}
 
         <div className="result">
           <div>
@@ -112,7 +118,7 @@ const Card = ({ buttonData }) => {
             <h1>${total}</h1>
           </div>
           <button
-            onClick={total === 0 ? '' : handleReset}
+            onClick={handleReset}
             className={total === 0 ? 'reset-defalt' : 'reset'}
           >
             RESET
