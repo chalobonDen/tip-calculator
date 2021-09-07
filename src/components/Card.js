@@ -10,54 +10,45 @@ const Card = ({ buttonData }) => {
   const [tip_amount, setTip_amount] = useState(0);
   const [total, setTotal] = useState(0);
 
-  const changePercent = (percent) => {
-    setPercent(percent);
-
-    if (price !== 0 && number !== 0) {
-      handleCalculate();
-    }
+  const changePercent = async (percent) => {
+    await setPercent(percent);
+    await handleCalculate();
   };
 
-  const changePercentInput = (e) => {
-    const percent = e.target.value;
-    setPercent(percent);
-
-    if (price !== 0 && number !== 0) {
-      handleCalculate();
-    }
+  const changePercentInput = async (e) => {
+    const percent = await e.target.value;
+    await setPercent(percent);
+    await handleCalculate();
   };
 
-  const handleChangePrice = (e) => {
-    const value = e.target.value;
-    setPrice(value);
-
-    if (price !== 0 && number !== 0) {
-      handleCalculate();
-    }
+  const handleChangePrice = async (e) => {
+    const value = await e.target.value;
+    await setPrice(value);
+    await handleCalculate();
   };
 
-  const handleChangeNumber = (e) => {
-    const value = e.target.value;
-    setNumber(value);
-
-    if (price !== 0 && number !== 0) {
-      handleCalculate();
-    }
+  const handleChangeNumber = async (e) => {
+    const value = await e.target.value;
+    await setNumber(value);
+    await handleCalculate();
   };
 
   const handleReset = () => {
     setPercent(0);
     setNumber(0);
     setPrice(0);
+    setTip_amount(0);
+    setTotal(0);
   };
 
   const handleCalculate = () => {
     if (percent === 0) {
-      setTip_amount(price / 100 / number);
+      setTip_amount(0);
+      setTotal(price / number);
     } else {
       setTip_amount((price * percent) / 100 / number);
+      setTotal(price / number + (price * percent) / 100 / number);
     }
-    setTotal(price / number + tip_amount);
   };
 
   return (
@@ -72,7 +63,7 @@ const Card = ({ buttonData }) => {
               </span>
               <input
                 onChange={handleChangePrice}
-                // value={price}
+                value={price}
                 type="number"
                 placeholder="0"
                 className="rightAlignText"
@@ -95,6 +86,7 @@ const Card = ({ buttonData }) => {
                 className="rightAlignText"
                 type="text"
                 placeholder="Custom"
+                value={percent}
                 onChange={changePercentInput}
               />
             </div>
@@ -111,7 +103,7 @@ const Card = ({ buttonData }) => {
                   onChange={handleChangeNumber}
                   type="number"
                   placeholder="0"
-                  // value={number}
+                  value={number}
                   className="rightAlignText"
                 />
               </div>
@@ -119,15 +111,13 @@ const Card = ({ buttonData }) => {
           </div>
         </div>
 
-        {/* <button onClick={handleCalculate}>submit</button> */}
-
         <div className="result">
           <div>
             <span>Tip Amount</span>
             <p>/person</p>
           </div>
           <div className="summary">
-            <h1>${tip_amount}</h1>
+            <h1>${tip_amount.toFixed(2)}</h1>
           </div>
 
           <div>
@@ -135,7 +125,7 @@ const Card = ({ buttonData }) => {
             <p>/person</p>
           </div>
           <div className="summary">
-            <h1>${total}</h1>
+            <h1>${total.toFixed(2)}</h1>
           </div>
           <button
             onClick={handleReset}
