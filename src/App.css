@@ -140,7 +140,7 @@ h3 {
   margin: 2rem;
   padding: 2rem;
   color: #fff;
-  height: 50vh;
+  /* height: 50vh; */
 
   display: grid;
   grid-template-columns: 1fr 1fr;
